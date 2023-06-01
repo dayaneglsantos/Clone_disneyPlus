@@ -5,6 +5,7 @@
 @use "available-devices";
 @use "faq";
 @use "footer";
+@use "header";
 
 @font-face {
   font-family: Avenir;
@@ -36,12 +37,24 @@ body {
 
 .text-big {
   @include text(18px);
+
+  @media (max-width: 768px) {
+    @include text(15px);
+  }
 }
 .text {
   @include text;
+
+  @media (max-width: 768px) {
+    @include text(14px);
+  }
 }
 .text-small {
   @include text(12px);
+
+  @media (max-width: 768px) {
+    @include text(11px);
+  }
 }
 
 .link-text {
@@ -57,9 +70,17 @@ body {
 
 .title-big {
   @include title(40px);
+
+  @media (max-width: 768px) {
+    @include title(28px);
+  }
 }
 .title-small {
   @include title;
+
+  @media (max-width: 768px) {
+    @include title(22px);
+  }
 }
 
 .button {
@@ -68,11 +89,33 @@ body {
   height: 60px;
   font-size: 18px;
   color: variaveis.$corTextoSec;
-  background-color: #6421ff;
+  background-color: variaveis.$bgBtnPrimary;
   border-radius: 4px;
-  margin-top: 2vw;
-  margin-bottom: 8px;
+  border: 1px solid variaveis.$bgBtnPrimary;
   cursor: pointer;
+
+  &:hover {
+    background-color: lighten(variaveis.$bgBtnPrimary, 3%);
+  }
+
+  &-secondary {
+    background-color: variaveis.$bgBtnSecondary;
+    border-color: variaveis.$bgBtnSecondary;
+
+    &:hover {
+      background-color: lighten(variaveis.$bgBtnSecondary, 3%);
+    }
+  }
+
+  &-dark {
+    background-color: variaveis.$bgbtndark;
+    border-color: variaveis.$corTextoSec;
+
+    &:hover {
+      background-color: variaveis.$corTextoSec;
+      color: variaveis.$bgColor;
+    }
+  }
 }
 
 .image-text-section {
@@ -80,6 +123,10 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
+
+  @media (max-width: 768px) {
+    display: block;
+  }
 
   &-text-container {
     padding: 0 2vw;
@@ -110,6 +157,12 @@ body {
       display: flex;
       flex-direction: column;
       justify-content: center;
+
+      @media (max-width: 768px) {
+        position: relative;
+        left: 0;
+        width: 100%;
+      }
     }
   }
 }
